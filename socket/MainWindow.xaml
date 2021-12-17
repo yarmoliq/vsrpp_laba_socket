@@ -1,0 +1,78 @@
+﻿<Window x:Class="socket.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:socket"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+
+        <Grid Margin="10">
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+
+        <Border BorderBrush="Black" BorderThickness="1"
+                Margin="0,0,0,287" Grid.RowSpan="2">
+            <StackPanel Margin="10" Grid.Column="0" Grid.Row="0">
+                <Label FontWeight="Bold">Socket Type</Label>
+                <RadioButton x:Name="rbClient" GroupName="ready"
+                             IsChecked="True" Content="Client"
+                             Height="29" Click="rbClient_Click"/>
+                <RadioButton x:Name="rbServer" GroupName="ready"
+                             Content="Server" Height="29"
+                             Click="rbServer_Click"/>
+            </StackPanel>
+        </Border>
+
+        <Border BorderThickness="1" BorderBrush="Black"
+                Grid.Column="1" Margin="0,0,0,287" Grid.RowSpan="2">
+            <Grid Margin="10,10,10,-31">
+                <Label FontWeight="Bold" Margin="0,0,445,73">
+                    Connection Properties
+                </Label>
+                <Label FontWeight="Bold" Margin="1,28,559,56">
+                    Address:
+                </Label>
+                <Label FontWeight="Bold" Width="60"
+                       Margin="1,54,597,33" Content="Port:"/>
+                <TextBox x:Name="tbAddress" HorizontalAlignment="Left"
+                         Margin="91,33,0,0" Text="loopback" TextWrapping="Wrap"
+                         VerticalAlignment="Top" Height="20" Width="182"/>
+                <TextBox x:Name="tbPort" HorizontalAlignment="Left"
+                         Margin="91,59,0,0" Text="4000" TextWrapping="Wrap"
+                         VerticalAlignment="Top" Height="20" Width="182"/>
+                <Button x:Name="btnListenConnect" Content="Connect"
+                        HorizontalAlignment="Left" Margin="282,33,0,0"
+                        VerticalAlignment="Top" Height="20" Width="120"
+                        Click="tbListen_Click"/>
+                <Button x:Name="btnCloseConnection" Content="Close Connection"
+                        HorizontalAlignment="Left" Margin="282,59,0,0"
+                        VerticalAlignment="Top" Height="20" Width="120"
+                        Click="tbCloseConnection_Click" IsEnabled="False"/>
+            </Grid>
+        </Border>
+
+        <TextBox x:Name="tbAllMessages" HorizontalAlignment="Left"
+                 Margin="0,139,0,0" Grid.Row="1" TextWrapping="Wrap"
+                 VerticalAlignment="Top" Width="323" Grid.ColumnSpan="2"
+                 Height="160" IsReadOnly="True" AcceptsReturn="True"
+                 VerticalScrollBarVisibility="Visible"/>
+        <TextBox x:Name="tbMessage" Grid.ColumnSpan="2"
+                 HorizontalAlignment="Left" Margin="0,309,0,0"
+                 Grid.Row="1" Text="Message" TextWrapping="Wrap"
+                 VerticalAlignment="Top" Width="270" Height="53"
+                 AcceptsReturn="True" IsEnabled="False"/>
+        <Button x:Name="btnSend" Content="Send" Grid.Column="1"
+                HorizontalAlignment="Left" Margin="179,309,0,0" Grid.Row="1"
+                VerticalAlignment="Top" Height="53" Width="45"
+                Click="btnSend_Click" IsEnabled="False"/>
+    </Grid>
+</Window>
